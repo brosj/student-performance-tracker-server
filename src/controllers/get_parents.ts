@@ -5,23 +5,19 @@ import Parent_registration from '../models/parent_registation';
 export async function readAllParents(_req: Request, res: Response) {
   try {
     const parents = await Parent_registration.find({});
-    // res.status(200).send(parents);
-    return parents;
+    res.status(200).send(parents);
   } catch (error) {
-    // res.status(500).json({ error: "No parent available." });
-    return false;
+    res.status(500).json({ error: "No parent available." });
   }
 }
 
 // Get single parent
 export async function readParent(req: Request, res: Response) {
   try {
-    const email = req.body.parent_email;
-    const parent =  await Parent_registration.findOne({parent_email: email});
-    // res.status(200).send(parent);
-    return parent;
+    const email = req.params.email;
+    const parent =  await Parent_registration.findOne({ parent_email: email });
+    parent ? res.status(200).send(parent) : res.status(500).json({ error: "No parent found matching email." });
   } catch (error) {
-    // res.status(500).json({ error: "No parent found matching email." });
-    return false;
+    res.status(500).json({ error: "No parent found matching email." });
   }
 }

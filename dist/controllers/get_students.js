@@ -25,7 +25,7 @@ async function readStudent(req, res) {
         const student = await stud_enrollment_1.default.findOne({
             admission_id: admissionId,
         });
-        res.status(200).send(student);
+        student ? res.status(200).send(student) : res.status(500).json({ error: "No student found matching admission ID." });
         return student;
     }
     catch (error) {

@@ -13,7 +13,8 @@ const studentEnroller = async (req, res) => {
     try {
         const classFee = await (0, get_fees_1.getClassFee)(req.body.class);
         // ----------- EDIT SEARCH EMAIL PARAM ------------- //
-        const parent = await (0, get_parents_1.readParent)(req, res);
+        // const parent = await readParent(req, res);
+        const parent = await parent_registation_1.default.findOne({ parent_email: req.params.parent_email });
         const student_enrollSchema = {
             admission_id: generateAdmissionID(),
             fname: req.body.fname,

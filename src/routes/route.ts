@@ -31,7 +31,7 @@ router.get('/children', getMyChildren);
 router.get('/parents', readAllParents);
 
 // Get single parent.
-router.get('/parents/:email', readParent);
+router.get('/parent/:email', readParent);
 
 // Add fee.
 router.put('/add-fee', addFee);

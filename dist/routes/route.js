@@ -27,7 +27,7 @@ router.get('/children', get_students_1.getMyChildren);
 // Get all parents.
 router.get('/parents', get_parents_1.readAllParents);
 // Get single parent.
-router.get('/parents/:email', get_parents_1.readParent);
+router.get('/parent/:email', get_parents_1.readParent);
 // Add fee.
 router.put('/add-fee', add_fee_1.addFee);
 // Add notification.

@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Stud_enrollment from "../models/stud_enrollment";
-import { StudentType } from "../models/types";
 
 // Get all enrolled students
 export async function readAllStudents(_req: Request, res: Response) {
@@ -21,7 +20,7 @@ export async function readStudent(req: Request, res: Response) {
     const student = await Stud_enrollment.findOne({
       admission_id: admissionId,
     });
-    res.status(200).send(student);
+    student ? res.status(200).send(student) : res.status(500).json({ error: "No student found matching admission ID." });
     return student;
   } catch (error) {
     res.status(500).json({ error: "No student found matching admission ID." });
